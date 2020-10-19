@@ -6,10 +6,11 @@
         :theme="navTheme"
         :trigger="null"
         v-model="collapsed"
+        width="256px"
         collapsible
       >
         <div class="logo">测试项目</div>
-        <SiderMenu></SiderMenu>
+        <SiderMenu :theme="navTheme" :menuMode="menuMode"></SiderMenu>
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="background: #fff; padding: 0">
@@ -53,6 +54,9 @@ export default {
     },
     navLayout() {
       return this.$route.query.navLayout || "left";
+    },
+    menuMode() {
+      return this.$route.query.menuMode || "inline";
     }
   },
   components: {

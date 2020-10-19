@@ -30,6 +30,14 @@
           <a-radio value="left">左部</a-radio>
           <a-radio value="top">顶部</a-radio>
         </a-radio-group>
+        <h2>菜单风格</h2>
+        <a-radio-group
+          :value="$route.query.menuMode || 'inline'"
+          @change="e => handleSettingChange('menuMode', e.target.value)"
+        >
+          <a-radio value="vertical">垂直</a-radio>
+          <a-radio value="inline">行内</a-radio>
+        </a-radio-group>
       </div>
     </a-drawer>
   </div>
