@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/user",
+    hideInMenu: true,
     component: () =>
       import(/* webpackChunkName: "layout" */ "../layouts/UserLayout.vue"),
     children: [
@@ -43,11 +44,18 @@ const routes = [
       {
         path: "/dashhoard",
         name: "dashhoard",
+        meta: {
+          icon: "radar-chart",
+          title: "仪表盘"
+        },
         component: { render: h => h("router-view") },
         children: [
           {
             path: "/dashhoard/analysis",
             name: "analysis",
+            meta: {
+              title: "分析页"
+            },
             component: () =>
               import(
                 /* webpackChunkName: "about" */ "../views/Dashhoard/Analysis.vue"
@@ -59,6 +67,10 @@ const routes = [
       {
         path: "/form",
         name: "form",
+        meta: {
+          icon: "form",
+          title: "表单"
+        },
         component: { render: h => h("router-view") },
         children: [
           {
@@ -68,6 +80,9 @@ const routes = [
           {
             path: "/form/basic-form",
             name: "basicform",
+            meta: {
+              title: "基础表单"
+            },
             component: () =>
               import(
                 /* webpackChunkName: "about" */ "../views/Forms/BasicForm.vue"
@@ -76,6 +91,10 @@ const routes = [
           {
             path: "/form/step-form",
             name: "stepform",
+            meta: {
+              title: "分布表单"
+            },
+            hideChildrenMenu: true,
             component: () =>
               import(/* webpackChunkName: "about" */ "../views/Forms/StepForm"),
             children: [
@@ -116,6 +135,7 @@ const routes = [
   {
     path: "*",
     name: "404",
+    hideInMenu: true,
     component: NotFound
   }
 ];
